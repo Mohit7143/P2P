@@ -1,0 +1,27 @@
+import requests,json
+try:
+    # Python2
+    import Tkinter as tk
+except ImportError:
+    # Python3
+    import tkinter as tk
+def select():
+    sf = "value is %s" % var.get()
+    print(sf)
+root = tk.Tk()
+# use width x height + x_offset + y_offset (no spaces!)
+root.geometry("%dx%d+%d+%d" % (330, 80, 200, 150))
+root.title("tk.Optionmenu as combobox")
+var = tk.StringVar(root)
+#choices = ['red', 'green', 'blue', 'yellow','white', 'magenta']
+p = requests.get('http://127.0.0.1:8254/get/')
+data = json.loads(p.text)
+choices = []
+for item in data:
+	choices.append(item['fields']['name'])
+var.set('red')
+option = tk.OptionMenu(root, var, *choices)
+option.pack(side='left', padx=10, pady=10)
+button = tk.Button(root, text="check value selected", command=select)
+button.pack(side='left', padx=20, pady=10)
+root.mainloop()
