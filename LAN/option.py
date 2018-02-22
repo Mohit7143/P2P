@@ -52,9 +52,9 @@ vr = tk.StringVar(root)
 vr.set("List of seeder's")
 choice.append('No list Available')
 ip_list = tk.OptionMenu(root, vr, *choice)
-ip_list.pack(side='left', padx=10, pady=10)
+ip_list.pack(side='left', padx=16, pady=16)
 
-bttn = tk.Button(root, text="check value selected", command=slct)
-bttn.pack(side='left', padx=20, pady=20)
+bttn = tk.Button(root, text="Download", command=slct)
+bttn.pack(side='left', padx=25, pady=25)
 
 root.mainloop()
